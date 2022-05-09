@@ -1,0 +1,6 @@
+{
+  "load_extensions": {
+    "ipyleaflet_gl_vector_layer/extension": true,
+    "@jupyter-widgets/base": true
+  }
+}

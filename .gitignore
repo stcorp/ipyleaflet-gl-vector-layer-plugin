@@ -1,0 +1,5 @@
+.idea/
+ipyleaflet_gl_vector_layer/labextension/
+ipyleaflet_gl_vector_layer/nbextension/
+js/dist/
+js/node_modules/
