@@ -1,7 +1,7 @@
 {
   "name": "ipyleaflet_gl_vector_layer",
   "version": "0.1.0",
-  "description": "A Custom Jupyter Widget Library",
+  "description": "An ipyleaflet plugin for rendering a GL vector layer",
   "author": "Martti Kaipiainen",
   "main": "lib/index.js",
   "keywords": [
