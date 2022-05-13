@@ -1,6 +1,5 @@
 const widgets = require('@jupyter-widgets/base');
-import {LeafletGlVectorLayer} from './leaflet-gl-vector-layer.es.js';
-const ndarray = require('ndarray');
+import {LeafletGlVectorLayer} from '@stcorp/leaflet-gl-vector-layer';
 function asciiDecode(buf) {
   return String.fromCharCode.apply(null, new Uint8Array(buf));
 }

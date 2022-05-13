@@ -1,5 +1,5 @@
 const widgets = require('@jupyter-widgets/base');
-import {LeafletGlVectorLayerWrapper} from './leaflet-gl-vector-layer.es.js';
+import {LeafletGlVectorLayerWrapper} from '@stcorp/leaflet-gl-vector-layer';
 export class IpyleafletGlVectorLayerWrapperModel extends widgets.WidgetModel {
   defaults() {
     return {
