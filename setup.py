@@ -51,6 +51,9 @@ setup_args = dict(
     install_requires=[
         'ipywidgets>=7.6.0',
         'ipyleaflet>=0.15.0'
+        'numpy',
+        'traittypes',
+        'traitlets',
     ],
     packages=find_packages(),
     zip_safe=False,

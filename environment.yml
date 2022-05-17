@@ -10,3 +10,6 @@ dependencies:
   - python
   - pip
   - ipywidgets
+  - numpy
+  - traitlets
+  - traittypes
