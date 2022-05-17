@@ -111,15 +111,12 @@ export class IpyleafletGlVectorLayerView extends widgets.WidgetView {
   }
 
   get_options() {
-    var o = this.model.get('options');
-    var options = {};
-    var key;
-    for (var i = 0; i < o.length; i++) {
-      key = o[i];
-      // Convert from foo_bar to fooBar that Leaflet.js uses
-      options[camel_case(key)] = this.model.get(key);
-    }
-    var leafletGlVectorLayerOptions = {data: {}, plot_type: this.model.get('plot_type'), colorrange: this.model.get('colorrange')};
+    var leafletGlVectorLayerOptions = {
+      data: {},
+      plot_type: this.model.get('plot_type'),
+      colorrange: this.model.get('colorrange'),
+      pointsize: this.model.get('pointsize')
+    };
     var lat_data;
     var lon_data;
     var data_data;
@@ -146,7 +143,7 @@ export class IpyleafletGlVectorLayerView extends widgets.WidgetView {
       values: data_data
     }
     return {
-      ...options,
+      opacity: this.model.get('opacity'),
       leafletGlVectorLayerOptions: leafletGlVectorLayerOptions
     };
   }

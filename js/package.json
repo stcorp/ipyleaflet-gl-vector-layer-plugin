@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@jupyter-widgets/base": "^1.1 || ^2 || ^3 || ^4",
-    "@stcorp/leaflet-gl-vector-layer": "^0.1.1",
+    "@stcorp/leaflet-gl-vector-layer": "^0.1.2",
     "is-buffer": "^2.0.5",
     "jupyter-leaflet": "^0.15.0",
     "leaflet": "^1.7.1",

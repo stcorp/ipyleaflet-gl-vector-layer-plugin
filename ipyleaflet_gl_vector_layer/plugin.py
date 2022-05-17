@@ -2,7 +2,7 @@ from ipyleaflet import LayerGroup, Layer
 import io
 import numpy as np
 from traitlets import (
-    Unicode, Bytes, Any, observe
+    Unicode, Bytes, Any, observe, Float
 )
 
 from ._version import EXTENSION_VERSION
@@ -13,6 +13,11 @@ class IpyleafletGlVectorLayer(Layer):
     lon_bytes = Bytes(allow_none=True).tag(sync=True)
     data_bytes = Bytes(allow_none=True).tag(sync=True)
     plot_type = Unicode(allow_none=True).tag(sync=True)
+    size = Unicode(allow_none=True).tag(sync=True)
+    centerlon = Float(allow_none=True).tag(sync=True)
+    centerlat = Float(allow_none=True).tag(sync=True)
+    opacity = Float(allow_none=True).tag(sync=True)
+    pointsize = Float(allow_none=True).tag(sync=True)
     colorrange = Array(allow_none=True).tag(sync=True)
     _view_name = Unicode('IpyleafletGlVectorLayerView').tag(sync=True)
     _model_name = Unicode('IpyleafletGlVectorLayerModel').tag(sync=True)
@@ -21,7 +26,7 @@ class IpyleafletGlVectorLayer(Layer):
     _view_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
     _model_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
 
-    def __init__(self, lat, lon, data, plot_type, colorrange=None, **kwargs):
+    def __init__(self, lat, lon, data, plot_type, colorrange=None, size=None, centerlon=0, centerlat=0, opacity=0.6, pointsize=None, **kwargs):
 
         iobyte_lat = io.BytesIO()
         iobyte_lon = io.BytesIO()
@@ -36,9 +41,14 @@ class IpyleafletGlVectorLayer(Layer):
         self.data_bytes = iobyte_data.getvalue()
         self.plot_type = plot_type
         self.colorrange = colorrange
+        self.size = size
+        self.centerlon = centerlon
+        self.centerlat = centerlat
+        self.opacity = opacity
+        self.pointsize = pointsize
         super(IpyleafletGlVectorLayer, self).__init__(**kwargs)
 
-    @observe('lat_bytes', 'lon_bytes', 'data_bytes', 'plot_type', 'colorrange')
+    @observe('lat_bytes', 'lon_bytes', 'data_bytes', 'plot_type', 'colorrange', 'opacity', 'pointsize')
     def _update_data(self, change):
         self.data = self._get_data()
 
@@ -48,7 +58,9 @@ class IpyleafletGlVectorLayer(Layer):
             "lon_bytes": self.lon_bytes,
             "data_bytes": self.data_bytes,
             "plot_type": self.plot_type,
-            "colorrange": self.colorrange
+            "colorrange": self.colorrange,
+            "opacity": self.opacity,
+            "pointsize": self.pointsize
         }
 
         return data
