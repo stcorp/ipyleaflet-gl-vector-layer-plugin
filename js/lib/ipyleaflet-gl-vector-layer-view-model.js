@@ -124,18 +124,18 @@ export class IpyleafletGlVectorLayerView extends widgets.WidgetView {
     if (this.model.get('lat_bytes')){
       lat_data = fromArrayBuffer(this.model.get('lat_bytes').buffer).data;
     } else if(this.model.get('lat')){
-      lat_data = new Float64Array(this.model.get('lat'));
+      lat_data = new Float32Array(this.model.get('lat'));
     }
 
     if (this.model.get('lon_bytes')){
       lon_data = fromArrayBuffer(this.model.get('lon_bytes').buffer).data;
-    } else if (this.model.get('lon')) {     lon_data = new Float64Array(this.model.get('lon'));
+    } else if (this.model.get('lon')) {     lon_data = new Float32Array(this.model.get('lon'));
     }
 
     if (this.model.get('data_bytes')){
       data_data = fromArrayBuffer(this.model.get('data_bytes').buffer).data;
     } else if (this.model.get('data')) {
-      data_data = new Float64Array(this.model.get('data'));
+      data_data = new Float32Array(this.model.get('data'));
     }
     leafletGlVectorLayerOptions.data = {
       latitudes: lat_data,
