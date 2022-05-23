@@ -5,9 +5,9 @@ export class IpyleafletGlVectorLayerWrapperModel extends widgets.WidgetModel {
     return {
       ...super.defaults(),
       _view_name: 'IpyleafletGlVectorLayerWrapperView',
-      _view_module: 'ipyleaflet_gl_vector_layer',
+      _view_module: '@stcorp/ipyleaflet-gl-vector-layer-plugin',
       _model_name: 'IpyleafletGlVectorLayerWrapperModel',
-      _model_module: 'ipyleaflet_gl_vector_layer',
+      _model_module: '@stcorp/ipyleaflet-gl-vector-layer-plugin',
       layers: []
     };
   }

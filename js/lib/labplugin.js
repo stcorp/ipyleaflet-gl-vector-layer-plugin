@@ -2,11 +2,11 @@ var plugin = require('./index');
 var base = require('@jupyter-widgets/base');
 
 module.exports = {
-  id: 'ipyleaflet_gl_vector_layer',
+  id: '@stcorp/ipyleaflet-gl-vector-layer-plugin',
   requires: [base.IJupyterWidgetRegistry],
   activate: function(app, widgets) {
       widgets.registerWidget({
-          name: 'ipyleaflet_gl_vector_layer',
+          name: '@stcorp/ipyleaflet-gl-vector-layer-plugin',
           version: plugin.version,
           exports: plugin
       });

@@ -68,9 +68,9 @@ export class IpyleafletGlVectorLayerModel extends widgets.WidgetModel {
     return {
       ...super.defaults(),
       _view_name: 'IpyleafletGlVectorLayerView',
-      _view_module: 'ipyleaflet_gl_vector_layer',
+      _view_module: '@stcorp/ipyleaflet-gl-vector-layer-plugin',
       _model_name: 'IpyleafletGlVectorLayerModel',
-      _model_module: 'ipyleaflet_gl_vector_layer'
+      _model_module: '@stcorp/ipyleaflet-gl-vector-layer-plugin'
     };
   }
 }
@@ -115,7 +115,8 @@ export class IpyleafletGlVectorLayerView extends widgets.WidgetView {
       data: {},
       plot_type: this.model.get('plot_type'),
       colorrange: this.model.get('colorrange'),
-      pointsize: this.model.get('pointsize')
+      pointsize: this.model.get('pointsize'),
+      colormap: this.model.get('colormap'),
     };
     var lat_data;
     var lon_data;
