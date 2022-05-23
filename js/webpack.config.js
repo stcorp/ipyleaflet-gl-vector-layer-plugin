@@ -66,7 +66,7 @@ module.exports = (env, argv) => {
                 filename: 'index.js',
                 path: path.resolve(__dirname, 'dist'),
                 libraryTarget: 'amd',
-                publicPath: 'https://unpkg.com/ipyleaflet_gl_vector_layer@' + version + '/dist/'
+                publicPath: 'https://unpkg.com/@stcorp/ipyleaflet-gl-vector-layer-plugin@' + version + '/dist/'
             },
             devtool,
             module: {

@@ -1,9 +1,14 @@
 {
-  "name": "ipyleaflet_gl_vector_layer",
+  "name": "@stcorp/ipyleaflet-gl-vector-layer-plugin",
   "version": "0.1.0",
   "description": "An ipyleaflet plugin for rendering a GL vector layer",
   "author": "Martti Kaipiainen",
   "main": "lib/index.js",
+  "license": "0BSD",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stcorp/ipyleaflet-gl-vector-layer-plugin.git"
+  },
   "keywords": [
     "jupyter",
     "widgets",
