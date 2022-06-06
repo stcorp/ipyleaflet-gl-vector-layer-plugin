@@ -30,10 +30,12 @@ jstargets = [
     pjoin(js_dir, 'dist', 'index.js'),
 ]
 
+labext_name = '@stcorp/ipyleaflet-gl-vector-layer-plugin'
+
 data_files_spec = [
-    ('share/jupyter/nbextensions/ipyleaflet_gl_vector_layer', 'ipyleaflet_gl_vector_layer/nbextension', '*.*'),
-    ('share/jupyter/labextensions/ipyleaflet_gl_vector_layer', 'ipyleaflet_gl_vector_layer/labextension', '**'),
-    ('share/jupyter/labextensions/ipyleaflet_gl_vector_layer', '.', 'install.json'),
+    ('share/jupyter/nbextensions/%s' % labext_name, 'ipyleaflet_gl_vector_layer/nbextension', '*.*'),
+    ('share/jupyter/labextensions/%s' % labext_name, 'ipyleaflet_gl_vector_layer/labextension', '**'),
+    ('share/jupyter/labextensions/%s' % labext_name, '.', 'install.json'),
     ('etc/jupyter/nbconfig/notebook.d', '.', 'ipyleaflet_gl_vector_layer.json'),
 ]
 
