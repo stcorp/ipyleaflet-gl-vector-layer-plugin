@@ -5,6 +5,4 @@
 // already be loaded by the notebook otherwise.
 
 // Export widget models and views, and the npm package version number.
-module.exports = require('./ipyleaflet-gl-vector-layer-view-model.js');
-module.exports = require('./ipyleaflet-gl-vector-layer-wrapper-view-model.js');
-module.exports['version'] = require('../package.json').version;
+module.exports = require('./index.js');
