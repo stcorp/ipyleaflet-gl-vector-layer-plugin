@@ -62,7 +62,7 @@ export class IpyleafletGlVectorLayerWrapperView extends widgets.WidgetView {
   }
 
   create_obj() {
-    this.obj = new LeafletGlVectorLayerWrapper();
+    this.obj = new LeafletGlVectorLayerWrapper({colormaps: this.model.get('colormaps')});
     this.layer_views = new widgets.ViewList(
         this.add_layer_model,
         this.remove_layer_view,

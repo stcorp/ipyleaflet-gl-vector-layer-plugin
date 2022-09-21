@@ -51,7 +51,7 @@ class IpyleafletGlVectorLayer(Layer):
         self.colormap = colormap
         super(IpyleafletGlVectorLayer, self).__init__(**kwargs)
 
-    @observe('lat_bytes', 'lon_bytes', 'data_bytes', 'plot_type', 'colorrange', 'opacity', 'pointsize', 'colormap')
+    @observe('lat_bytes', 'lon_bytes', 'data_bytes', 'plot_type', 'colorrange', 'opacity', 'pointsize', 'colormap', 'colormaps')
     def _update_data(self, change):
         self.data = self._get_data()
 
@@ -79,9 +79,26 @@ class IpyleafletGlVectorLayerWrapper(LayerGroup):
     _model_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
 
     # Options
+    colormaps = Array(allow_none=True).tag(sync=True)
+
+    def __init__(self, colormaps=None, **kwargs):
+        self.colormaps = colormaps
+        super(IpyleafletGlVectorLayerWrapper, self).__init__(**kwargs)
+
 
     def add_layer(self, layer):
         if layer.model_id in self._layer_ids:
             raise Exception('layer already in layergroup: %r' % layer)
         self.layers = tuple([layer for layer in self.layers] + [layer])
 
+
+    @observe('colormaps')
+    def _update_data(self, change):
+        self.data = self._get_data()
+
+    def _get_data(self):
+        data = {
+            "colormaps": self.colormaps
+        }
+
+        return data

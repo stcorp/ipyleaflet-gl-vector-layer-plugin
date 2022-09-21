@@ -44,17 +44,43 @@ export class IpyleafletGlVectorLayerView extends widgets.WidgetView {
   }
 
   get_options() {
+    let colormap = this.model.get('colormap');
+
+    var lat_data;
+    var lon_data;
+    var data_data;
+    // RGB(A) passed instead of XRGBA
+    if(colormap && !Array.isArray(colormap)) {
+      console.error('colormap must be an array');
+      colormap = undefined;
+    }
+    if(Array.isArray(colormap) && colormap[0].length < 5) {
+      let colorMapWithXValues = rgba_to_xrgba(colormap);
+      colormap = colorMapWithXValues;
+    }
+
     var leafletGlVectorLayerOptions = {
       data: {},
       plot_type: this.model.get('plot_type'),
       colorrange: this.model.get('colorrange'),
       pointsize: this.model.get('pointsize'),
-      colormap: this.model.get('colormap'),
+      colormap: colormap,
+      colormaps: this.model.get('colormaps')
     };
-    var lat_data;
-    var lon_data;
-    var data_data;
 
+
+
+    if(Array.isArray(this.model.get('colormaps'))) {
+      let colormaps = this.model.get('colormaps');
+      let transformedColormaps = colormaps.map(colormap => {
+        let transformedColormap = colormap;
+        if(colormap[0].length < 5) {
+          transformedColormap = this.rgba_to_xrgba(colormap);
+        }
+        return transformedColormap;
+      })
+      leafletGlVectorLayerOptions.colormaps = transformedColormaps;
+    }
     if (this.model.get('lat_bytes')){
       lat_data = fromArrayBuffer(this.model.get('lat_bytes').buffer).data;
     } else if(this.model.get('lat')){
@@ -63,7 +89,8 @@ export class IpyleafletGlVectorLayerView extends widgets.WidgetView {
 
     if (this.model.get('lon_bytes')){
       lon_data = fromArrayBuffer(this.model.get('lon_bytes').buffer).data;
-    } else if (this.model.get('lon')) {     lon_data = new Float32Array(this.model.get('lon'));
+    } else if (this.model.get('lon')) {
+      lon_data = new Float32Array(this.model.get('lon'));
     }
 
     if (this.model.get('data_bytes')){
@@ -76,10 +103,21 @@ export class IpyleafletGlVectorLayerView extends widgets.WidgetView {
       longitudes: lon_data,
       values: data_data
     }
+
     return {
       opacity: this.model.get('opacity'),
       leafletGlVectorLayerOptions: leafletGlVectorLayerOptions
     };
+  }
+
+  rgba_to_xrgba(colormap) {
+    return colormap.map((color, index) => {
+      let newColor = [index / (colormap.length - 1), ...color];
+      if(newColor.length < 5) {
+        newColor.push(1);
+      }
+      return newColor;
+    })
   }
 
   leaflet_events() {
