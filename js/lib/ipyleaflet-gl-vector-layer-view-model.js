@@ -54,11 +54,6 @@ export class IpyleafletGlVectorLayerView extends widgets.WidgetView {
       console.error('colormap must be an array');
       colormap = undefined;
     }
-    if(Array.isArray(colormap) && colormap[0].length < 5) {
-      let colorMapWithXValues = rgba_to_xrgba(colormap);
-      colormap = colorMapWithXValues;
-    }
-
     var leafletGlVectorLayerOptions = {
       data: {},
       plot_type: this.model.get('plot_type'),
@@ -67,20 +62,6 @@ export class IpyleafletGlVectorLayerView extends widgets.WidgetView {
       colormap: colormap,
       colormaps: this.model.get('colormaps')
     };
-
-
-
-    if(Array.isArray(this.model.get('colormaps'))) {
-      let colormaps = this.model.get('colormaps');
-      let transformedColormaps = colormaps.map(colormap => {
-        let transformedColormap = colormap;
-        if(colormap[0].length < 5) {
-          transformedColormap = this.rgba_to_xrgba(colormap);
-        }
-        return transformedColormap;
-      })
-      leafletGlVectorLayerOptions.colormaps = transformedColormaps;
-    }
     if (this.model.get('lat_bytes')){
       lat_data = fromArrayBuffer(this.model.get('lat_bytes').buffer).data;
     } else if(this.model.get('lat')){
@@ -108,16 +89,6 @@ export class IpyleafletGlVectorLayerView extends widgets.WidgetView {
       opacity: this.model.get('opacity'),
       leafletGlVectorLayerOptions: leafletGlVectorLayerOptions
     };
-  }
-
-  rgba_to_xrgba(colormap) {
-    return colormap.map((color, index) => {
-      let newColor = [index / (colormap.length - 1), ...color];
-      if(newColor.length < 5) {
-        newColor.push(1);
-      }
-      return newColor;
-    })
   }
 
   leaflet_events() {
