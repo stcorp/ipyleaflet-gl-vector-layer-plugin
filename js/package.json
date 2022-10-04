@@ -1,6 +1,6 @@
 {
   "name": "@stcorp/ipyleaflet-gl-vector-layer-plugin",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "An ipyleaflet plugin for rendering a GL vector layer",
   "author": "Martti Kaipiainen",
   "main": "lib/index.js",
