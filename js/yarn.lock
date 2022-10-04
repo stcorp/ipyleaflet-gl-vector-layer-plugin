@@ -379,10 +379,10 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@stcorp/leaflet-gl-vector-layer@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@stcorp/leaflet-gl-vector-layer/-/leaflet-gl-vector-layer-0.2.1.tgz#f99d6913fd61429fcc8f0ea65b57369dcd1ea577"
-  integrity sha512-tFsRrx1lMJRsrh6xBomrzretmrWjsCdQt4woTVcB5PlKfae56LxbftiRQHr0UEx6jqs+jwdzcvoU0NOJ0I+1yA==
+"@stcorp/leaflet-gl-vector-layer@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@stcorp/leaflet-gl-vector-layer/-/leaflet-gl-vector-layer-0.2.2.tgz#b41ea2f6ec8a001833a52f51fe4e859c9e86adf8"
+  integrity sha512-CaUZp38/3LBQS1bLzCokLIMSBUA6XhE/sXf60q5E5dxA4woh3XRpBknSyfjxmov1J/nBTvvwxBrXSVL8ab0BXw==
   dependencies:
     "@jaames/iro" "^5.5.2"
     chroma-js "^2.4.2"
