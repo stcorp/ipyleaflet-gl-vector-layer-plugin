@@ -60,7 +60,8 @@ export class IpyleafletGlVectorLayerView extends widgets.WidgetView {
       colorrange: this.model.get('colorrange'),
       pointsize: this.model.get('pointsize'),
       colormap: colormap,
-      colormaps: this.model.get('colormaps')
+      colormaps: this.model.get('colormaps'),
+      label: this.model.get('label')
     };
     if (this.model.get('lat_bytes')){
       lat_data = fromArrayBuffer(this.model.get('lat_bytes').buffer).data;
