@@ -20,6 +20,7 @@ class IpyleafletGlVectorLayer(Layer):
     pointsize = Float(allow_none=True).tag(sync=True)
     colorrange = Array(allow_none=True).tag(sync=True)
     colormap = Union([Unicode(allow_none=True), Array(Unicode(allow_none=True))], allow_none=True).tag(sync=True)
+    label = Unicode(allow_none=True).tag(sync=True)
     _view_name = Unicode('IpyleafletGlVectorLayerView').tag(sync=True)
     _model_name = Unicode('IpyleafletGlVectorLayerModel').tag(sync=True)
     _view_module = Unicode("@stcorp/ipyleaflet-gl-vector-layer-plugin").tag(sync=True)
@@ -28,7 +29,7 @@ class IpyleafletGlVectorLayer(Layer):
     _model_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
 
     def __init__(self, lat, lon, data, plot_type, colorrange=None, size=None, centerlon=0, centerlat=0, opacity=0.6,
-                 pointsize=None, colormap=None, **kwargs):
+                 pointsize=None, colormap=None, label=None, **kwargs):
 
         iobyte_lat = io.BytesIO()
         iobyte_lon = io.BytesIO()
@@ -49,6 +50,7 @@ class IpyleafletGlVectorLayer(Layer):
         self.opacity = opacity
         self.pointsize = pointsize
         self.colormap = colormap
+        self.label = label
         super(IpyleafletGlVectorLayer, self).__init__(**kwargs)
 
     @observe('lat_bytes', 'lon_bytes', 'data_bytes', 'plot_type', 'colorrange', 'opacity', 'pointsize', 'colormap', 'colormaps')
@@ -64,7 +66,8 @@ class IpyleafletGlVectorLayer(Layer):
             "colorrange": self.colorrange,
             "opacity": self.opacity,
             "pointsize": self.pointsize,
-            "colormap": self.colormap
+            "colormap": self.colormap,
+            "label": self.label
         }
 
         return data
