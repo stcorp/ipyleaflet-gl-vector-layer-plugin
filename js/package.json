@@ -1,6 +1,6 @@
 {
   "name": "@stcorp/ipyleaflet-gl-vector-layer-plugin",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "An ipyleaflet plugin for rendering a GL vector layer",
   "author": "Martti Kaipiainen",
   "main": "lib/index.js",
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@jupyter-widgets/base": "^1.1 || ^2 || ^3 || ^4",
-    "@stcorp/leaflet-gl-vector-layer": "^0.2.5",
+    "@stcorp/leaflet-gl-vector-layer": "^0.2.6",
     "is-buffer": "^2.0.5",
     "jupyter-leaflet": "^0.17.0",
     "leaflet": "^1.7.1",
