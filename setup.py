@@ -52,7 +52,7 @@ setup_args = dict(
     include_package_data=True,
     install_requires=[
         'ipywidgets>=7.6.0',
-        'ipyleaflet>=0.15.0'
+        'ipyleaflet>=0.15.0',
         'numpy',
         'traittypes',
         'traitlets',
@@ -68,7 +68,7 @@ setup_args = dict(
         'jupyter',
         'widgets',
         'ipyleaflet',
-        'gl'
+        'gl',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
