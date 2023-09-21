@@ -2,7 +2,7 @@ name: ipyleaflet-gl-vector-layer-plugin
 channels:
   - conda-forge
 dependencies:
-  - ipyleaflet=0.15.0
+  - ipyleaflet>=0.13.5
   - jupyterlab
   - jupyter-packaging
   - nodejs
